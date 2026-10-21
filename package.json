@@ -1,0 +1,83 @@
+{
+  "name": "window-dock",
+  "displayName": "Window Dock",
+  "description": "Dock no canto inferior esquerdo para navegar entre janelas do VS Code, com nome, ícone e atalho.",
+  "version": "0.0.8",
+  "publisher": "wallyson",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Other"],
+  "extensionKind": ["ui"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WallysonMachadoDeLima/window-dock"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "windowDock.open", "title": "Window Dock: Ir para janela" },
+      { "command": "windowDock.quickSwitch", "title": "Window Dock: Trocar de janela" },
+      { "command": "windowDock.manage", "title": "Window Dock: Gerenciar dock" },
+      { "command": "windowDock.pinCurrent", "title": "Window Dock: Fixar/editar esta janela" },
+      { "command": "windowDock.slot1", "title": "Window Dock: Ir para slot 1" },
+      { "command": "windowDock.slot2", "title": "Window Dock: Ir para slot 2" },
+      { "command": "windowDock.slot3", "title": "Window Dock: Ir para slot 3" },
+      { "command": "windowDock.slot4", "title": "Window Dock: Ir para slot 4" },
+      { "command": "windowDock.slot5", "title": "Window Dock: Ir para slot 5" },
+      { "command": "windowDock.slot6", "title": "Window Dock: Ir para slot 6" },
+      { "command": "windowDock.slot7", "title": "Window Dock: Ir para slot 7" },
+      { "command": "windowDock.slot8", "title": "Window Dock: Ir para slot 8" },
+      { "command": "windowDock.slot9", "title": "Window Dock: Ir para slot 9" }
+    ],
+    "keybindings": [
+      { "command": "windowDock.slot1", "key": "ctrl+alt+1", "mac": "cmd+1" },
+      { "command": "windowDock.slot2", "key": "ctrl+alt+2", "mac": "cmd+2" },
+      { "command": "windowDock.slot3", "key": "ctrl+alt+3", "mac": "cmd+3" },
+      { "command": "windowDock.slot4", "key": "ctrl+alt+4", "mac": "cmd+4" },
+      { "command": "windowDock.slot5", "key": "ctrl+alt+5", "mac": "cmd+5" },
+      { "command": "windowDock.slot6", "key": "ctrl+alt+6", "mac": "cmd+6" },
+      { "command": "windowDock.slot7", "key": "ctrl+alt+7", "mac": "cmd+7" },
+      { "command": "windowDock.slot8", "key": "ctrl+alt+8", "mac": "cmd+8" },
+      { "command": "windowDock.slot9", "key": "ctrl+alt+9", "mac": "cmd+9" },
+      { "command": "windowDock.quickSwitch", "key": "ctrl+alt+0" }
+    ],
+    "configuration": {
+      "title": "Window Dock",
+      "properties": {
+        "windowDock.items": {
+          "type": "array",
+          "default": [],
+          "description": "Janelas configuradas no dock (ordem da esquerda para a direita).",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "description": "Nome exibido." },
+              "icon": { "type": "string", "description": "Emoji ou codicon, ex: 🌱 ou $(rocket)." },
+              "uri": { "type": "string", "description": "Pasta ou arquivo .code-workspace (caminho ou URI)." },
+              "pinned": { "type": "boolean", "default": true, "description": "Fica no dock mesmo com a janela fechada." }
+            },
+            "required": ["uri"]
+          }
+        },
+        "windowDock.showNames": {
+          "type": "boolean",
+          "default": false,
+          "description": "Mostrar o nome ao lado do ícone."
+        },
+        "windowDock.showUnpinned": {
+          "type": "boolean",
+          "default": true,
+          "description": "Mostrar também janelas abertas que não estão fixadas."
+        },
+        "windowDock.defaultIcon": {
+          "type": "string",
+          "default": "$(window)",
+          "description": "Ícone para janelas não fixadas."
+        }
+      }
+    }
+  }
+}
